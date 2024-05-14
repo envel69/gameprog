@@ -15,5 +15,7 @@ public class Bouncy : MonoBehaviour
             Vector2 normal = collision.GetContact(0).normal;
             ball.AddForce(-normal * this.bounceStrength);
         }
+
+
     }
 }

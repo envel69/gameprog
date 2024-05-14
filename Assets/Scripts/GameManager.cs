@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
         this.ordi.ResetPosition();
         this.ball.ResetPosition();
         this.ball.AddStartingForce();
+
+        
     }
 
     public void OrdiScores()
