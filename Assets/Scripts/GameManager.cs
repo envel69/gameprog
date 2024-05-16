@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI OrdiScoreText;
 
 
-    private int _scoreplayer;
-    private int _scoreordi;
+    public int _scoreplayer;
+    public int _scoreordi;
 
     public void PlayerScores()
     {
