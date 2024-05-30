@@ -55,4 +55,9 @@ public class Ball : MonoBehaviour
             }
         }
     }
+
+    internal void StopMovement()
+    {
+        throw new System.NotImplementedException();
+    }
 }
