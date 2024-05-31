@@ -57,10 +57,22 @@ public class BallMedium : MonoBehaviour
                 _audioSource.PlayOneShot(bounceSound);
             }
 
-            // Instancier une nouvelle balle lorsqu'elle touche le mur
-            if (ballPrefab != null)
+            // Vérifier si le mur touché est le mur du haut ou du bas
+            if (other.transform.position.y > 0 && gameObject.CompareTag("BallMedium"))
             {
-                Instantiate(ballPrefab, Vector3.zero, Quaternion.identity);
+                // Instancier une nouvelle balle en haut si la balle moyenne touche le mur du haut
+                if (ballPrefab != null)
+                {
+                    Instantiate(ballPrefab, new Vector3(0, 4, 0), Quaternion.identity);
+                }
+            }
+            else if (other.transform.position.y < 0 && gameObject.CompareTag("BallMedium"))
+            {
+                // Instancier une nouvelle balle en bas si la balle moyenne touche le mur du bas
+                if (ballPrefab != null)
+                {
+                    Instantiate(ballPrefab, new Vector3(0, -4, 0), Quaternion.identity);
+                }
             }
         }
         else if (other.CompareTag("Paddle"))

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Playerpad : Player
 {
+    public float maxYPosition = 4.0f; // Limite supérieure de déplacement du palet
+    public float minYPosition = -4.0f; // Limite inférieure de déplacement du palet
+
     private Vector2 _direction;
 
     private void Update()
@@ -21,8 +24,14 @@ public class Playerpad : Player
     {
         if (_direction.sqrMagnitude != 0)
         {
-            _rigidbody.AddForce(_direction * this.speed);
+            // Ajouter la direction au palet
+            Vector2 newPosition = (Vector2)transform.position + _direction * this.speed * Time.fixedDeltaTime;
 
+            // Limiter la nouvelle position à la moitié supérieure de l'écran
+            newPosition.y = Mathf.Clamp(newPosition.y, minYPosition, maxYPosition);
+
+            // Définir la nouvelle position
+            _rigidbody.MovePosition(newPosition);
         }
     }
 
