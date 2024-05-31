@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
 
     private const int MaxScore = 3; // Score maximum pour finir le jeu
 
+    public ScreenShake screenShake;  // Référence au script ScreenShake
+    public float shakeDuration = 0.5f;
+    public float shakeMagnitude = 0.3f;
+
     public void PlayerScores()
     {
         _scoreplayer++;
@@ -25,6 +29,7 @@ public class GameManager : MonoBehaviour
         {
             ResetGame();
         }
+        StartCoroutine(screenShake.Shake(shakeDuration, shakeMagnitude));
     }
 
     public void OrdiScores()
@@ -36,6 +41,7 @@ public class GameManager : MonoBehaviour
         {
             ResetGame();
         }
+        StartCoroutine(screenShake.Shake(shakeDuration, shakeMagnitude));
     }
 
     private void ResetGame()
